@@ -1,0 +1,15 @@
+<%= form_tag(url, id: form_name, method: method_type) do %>
+
+<%= label_tag "Recipe Name" %>
+<%= text_field_tag "recipe[name]" %><br><br>
+
+<%= label_tag "Ingredients" %><br>
+
+<% ingredients.each do |ingredient| %>
+<%= label_tag ingredient.name %>
+
+<%= check_box_tag "recipe[ingredient_ids][]", ingredient.id, false , id: ingredient.name %><br>
+<% end %>
+
+<%= submit_tag submit_name %>
+<% end %>

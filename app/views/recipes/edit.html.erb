@@ -1,0 +1,17 @@
+<h1>Edit Recipe</h1>
+
+<%= form_tag(recipe_path(@recipe), id: "edit_recipe_#{@recipe.id}", method: "PATCH") do %>
+
+    <%= label_tag "Recipe Name" %>
+    <%= text_field_tag "recipe[name]", @recipe.name %><br><br>
+    <%= label_tag "Ingredients" %><br>
+
+    <% @ingredients.each do |ingredient| %>
+
+        <%= label_tag ingredient.name %>
+        <%= check_box_tag "recipe[ingredient_ids][]", ingredient.id, @recipe.ingredients.include?(ingredient), id: ingredient.name %><br>
+    <% end %>
+    
+    <%= submit_tag "Update Recipe" %>
+
+<% end %>
